@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+smart_home.db
+.vscode/
+.idea/
