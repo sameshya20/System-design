@@ -15,35 +15,41 @@ This platform provides REST APIs for:
 ---
 
 ## 🛠️ Technology Stack
-- **Backend Framework**: Python FastAPI
-- **ASGI Server**: Uvicorn
-- **Database**: SQLite (built-in relational database)
-- **Validation**: Pydantic v2
-- **Documentation**: Swagger UI & ReDoc (built-in)
+- **Python**: FastAPI, Uvicorn, SQLite, Pydantic
+- **Java**:
+  - **Standalone Java 21 REST Server** (`java/com/smarthome/SmartHomeServer.java`) using built-in `com.sun.net.httpserver.HttpServer` and Virtual Threads (Zero external dependencies).
+  - **Spring Boot 3 Project** (`java/spring-boot/`) with Spring Data JPA, Spring Web, and H2 database.
 
 ---
 
 ## 🚀 Quick Start Guide
 
-### 1. Installation
-Install the required packages using pip:
+### Option 1: Run with Python (FastAPI + SQLite)
 ```bash
 pip install -r requirements.txt
-```
-
-### 2. Run the Application
-Start the development server with live reload:
-```bash
 uvicorn main:app --reload
 ```
-or
-```bash
-python main.py
-```
+Swagger UI: 👉 **http://127.0.0.1:8000/docs**
 
-### 3. Open Swagger UI
-Navigate to your browser:
-👉 **http://127.0.0.1:8000/docs**
+---
+
+### Option 2: Run with Java (Zero-Dependency Standalone Server)
+Requires only standard Java 21 (no Maven required):
+```bash
+javac -d bin java/com/smarthome/SmartHomeServer.java
+java -cp bin com.smarthome.SmartHomeServer
+```
+API Root: 👉 **http://127.0.0.1:8080/**
+
+---
+
+### Option 3: Run with Spring Boot
+```bash
+cd java/spring-boot
+mvn spring-boot:run
+```
+Swagger UI: 👉 **http://localhost:8080/docs**
+H2 Console: 👉 **http://localhost:8080/h2-console**
 
 ---
 
